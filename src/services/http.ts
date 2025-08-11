@@ -61,9 +61,7 @@ export async function httpRequest<TResponse, TBody = unknown>(
       if (response.status === 401) {
         try {
           localStorage.removeItem('person-nexus-token');
-          if (typeof window !== 'undefined' && window.location.pathname !== '/login') {
-            window.location.replace('/login');
-          }
+          window.location.reload();
         } catch { /* empty */ }
       }
       throw new Error(message);
